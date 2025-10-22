@@ -10,7 +10,7 @@ Developed for the **AWS Global Vibe: AI Coding Hackathon 2025**, it targets the 
 
 ---
 
-## 🧩 Problem
+##  Problem
 Retail investors face:
 - **Market volatility** and unpredictable swings  
 - **Biased or sensationalized news**  
@@ -20,7 +20,7 @@ This agent tackles these issues through **data-driven predictions** and **transp
 
 ---
 
-## ✨ Features
+##  Features
 - **Sentiment Analysis** — Real-time NLP on X/Twitter to gauge market mood  
 - **News Integration** — Financial news relevance scoring via NewsAPI or RSS  
 - **Historical Analysis** — LSTM/XGBoost forecasting on price trends  
@@ -31,7 +31,7 @@ This agent tackles these issues through **data-driven predictions** and **transp
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 **Data Ingestion**
 - Social media (X/Twitter API)  
 - Financial news feeds / NewsAPI  
@@ -49,7 +49,7 @@ This agent tackles these issues through **data-driven predictions** and **transp
 
 ---
 
-## 🧰 Tech Stack
+##  Tech Stack
 | Layer | Technologies |
 |-------|---------------|
 | Frontend | React · Tailwind CSS · Chart.js |
