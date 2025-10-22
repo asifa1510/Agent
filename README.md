@@ -1,4 +1,4 @@
-# Stock Trading Agent with Sentiment-Driven Predictions
+# Sentiment-Driven Trading Agent
 
 **AI trading agent merging sentiment, news, and data for explainable decisions.**
 
