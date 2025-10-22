@@ -44,6 +44,11 @@ class Settings(BaseSettings):
     twitter_bearer_token: Optional[str] = None
     news_api_key: Optional[str] = None
     
+    # API Rate Limits (requests per minute)
+    twitter_rate_limit: int = 20
+    news_api_rate_limit: int = 30
+    yahoo_finance_rate_limit: int = 60
+    
     class Config:
         env_file = ".env"
         case_sensitive = False
