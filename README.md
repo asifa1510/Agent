@@ -6,7 +6,6 @@
 
 ## 🚀 Overview
 This project builds an **AI-powered stock trading agent** that integrates **social media sentiment**, **financial news**, and **historical market data** to make **autonomous, explainable trading decisions**.  
-Developed for the **AWS Global Vibe: AI Coding Hackathon 2025**, it targets the **Fintech** and **Agentic AI Systems** tracks.
 
 ---
 
