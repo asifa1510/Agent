@@ -36,6 +36,10 @@ class Settings(BaseSettings):
     lstm_endpoint: str = "price-lstm-endpoint"
     xgboost_endpoint: str = "price-xgboost-endpoint"
     
+    # SageMaker Endpoint Names (for prediction service)
+    lstm_endpoint_name: str = "lstm-price-prediction"
+    xgboost_endpoint_name: str = "xgboost-price-prediction"
+    
     # Risk Management
     max_position_allocation: float = 0.05  # 5% max per position
     stop_loss_threshold: float = 0.02  # 2% stop loss
@@ -43,6 +47,12 @@ class Settings(BaseSettings):
     # External APIs
     twitter_bearer_token: Optional[str] = None
     news_api_key: Optional[str] = None
+    
+    # AWS Bedrock Configuration
+    bedrock_model_id: str = "anthropic.claude-3-sonnet-20240229-v1:0"
+    bedrock_max_tokens: int = 1000
+    bedrock_temperature: float = 0.3
+    explanation_timeout_seconds: int = 15
     
     # API Rate Limits (requests per minute)
     twitter_rate_limit: int = 20
