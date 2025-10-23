@@ -133,6 +133,68 @@ class ApiClient {
     });
     return response.data.data;
   }
+
+  // Integration API endpoints
+  async runCompletePipeline(
+    symbols: string[], 
+    includeTrading: boolean = true, 
+    includeExplanations: boolean = true
+  ): Promise<any> {
+    const response: AxiosResponse<ApiResponse<any>> = await this.client.post('/integration/run-pipeline', {
+      symbols,
+      include_trading: includeTrading,
+      include_explanations: includeExplanations
+    });
+    return response.data.data;
+  }
+
+  async runPipelineAsync(
+    symbols: string[], 
+    includeTrading: boolean = true, 
+    includeExplanations: boolean = true
+  ): Promise<any> {
+    const response: AxiosResponse<ApiResponse<any>> = await this.client.post('/integration/run-pipeline-async', {
+      symbols,
+      include_trading: includeTrading,
+      include_explanations: includeExplanations
+    });
+    return response.data.data;
+  }
+
+  async getSystemHealth(): Promise<any> {
+    const response: AxiosResponse<ApiResponse<any>> = await this.client.get('/integration/health');
+    return response.data.data;
+  }
+
+  async getSystemMetrics(): Promise<any> {
+    const response: AxiosResponse<ApiResponse<any>> = await this.client.get('/integration/metrics');
+    return response.data.data;
+  }
+
+  async resetSystemMetrics(): Promise<any> {
+    const response: AxiosResponse<ApiResponse<any>> = await this.client.post('/integration/metrics/reset');
+    return response.data.data;
+  }
+
+  async ingestDataOnly(
+    symbols: string[], 
+    includeSocial: boolean = true, 
+    includeNews: boolean = true, 
+    includeMarket: boolean = true
+  ): Promise<any> {
+    const response: AxiosResponse<ApiResponse<any>> = await this.client.post('/integration/data/ingest', {
+      symbols,
+      include_social: includeSocial,
+      include_news: includeNews,
+      include_market: includeMarket
+    });
+    return response.data.data;
+  }
+
+  async getIntegrationStatus(): Promise<any> {
+    const response: AxiosResponse<ApiResponse<any>> = await this.client.get('/integration/status');
+    return response.data.data;
+  }
 }
 
 // Create and export a singleton instance

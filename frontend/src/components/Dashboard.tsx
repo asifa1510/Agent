@@ -4,6 +4,8 @@ import SymbolSelector from './SymbolSelector';
 import LoadingSpinner from './LoadingSpinner';
 import { SentimentChart, PredictionPanel, InteractiveChart } from './charts';
 import { InsightsDashboard } from './explanations';
+import { SystemIntegration } from './SystemIntegration';
+import { MonitoringDashboard } from './MonitoringDashboard';
 
 export function Dashboard() {
   const { state } = useAppContext();
@@ -209,6 +211,12 @@ export function Dashboard() {
 
       {/* Trading Insights Dashboard */}
       <InsightsDashboard limit={20} />
+
+      {/* System Integration Control */}
+      <SystemIntegration />
+
+      {/* Monitoring Dashboard */}
+      <MonitoringDashboard />
     </div>
   );
 }
