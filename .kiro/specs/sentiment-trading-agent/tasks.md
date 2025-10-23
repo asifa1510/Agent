@@ -176,26 +176,28 @@
   - Add statistical significance testing
   - _Requirements: 6.4_
 
-- [ ] 7. Build React dashboard frontend
-- [ ] 7.1 Set up React project with core components
+- [x] 7. Build React dashboard frontend
+
+- [x] 7.1 Set up React project with core components
+
   - Create React app with TypeScript and Tailwind CSS
   - Set up routing and state management
   - Implement API client for backend communication
   - _Requirements: 7.1, 7.4_
 
-- [ ] 7.2 Create real-time data visualization components
+- [x] 7.2 Create real-time data visualization components
   - Build SentimentChart component with real-time updates
   - Implement PredictionPanel with confidence bands
   - Create interactive charts using Chart.js
   - _Requirements: 7.1, 7.3_
 
-- [ ] 7.3 Implement portfolio and trade management UI
+- [x] 7.3 Implement portfolio and trade management UI
   - Create PortfolioView component for positions and performance
   - Build TradeHistory component with explanation display
   - Add filtering and search functionality
   - _Requirements: 7.2_
 
-- [ ] 7.4 Add explanation and insight displays
+- [x] 7.4 Add explanation and insight displays
   - Create explanation visualization components
   - Implement confidence score displays
   - Build supporting data visualization for trade reasoning

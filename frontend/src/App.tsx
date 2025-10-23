@@ -1,19 +1,32 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AppProvider } from './context/AppContext';
+import Layout from './components/Layout';
+import Navigation from './components/Navigation';
+import Dashboard from './components/Dashboard';
+import SentimentPage from './pages/SentimentPage';
+import PredictionsPage from './pages/PredictionsPage';
+import TradesPage from './pages/TradesPage';
+import PortfolioPage from './pages/PortfolioPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Sentiment Trading Agent Dashboard</h1>
-        <p>AI-powered trading insights and portfolio management</p>
-      </header>
-      <main>
-        <div className="dashboard-placeholder">
-          <p>Dashboard components will be implemented in subsequent tasks</p>
-        </div>
-      </main>
-    </div>
+    <AppProvider>
+      <Router>
+        <Layout>
+          <Navigation />
+          <div className="mt-6">
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/sentiment" element={<SentimentPage />} />
+              <Route path="/predictions" element={<PredictionsPage />} />
+              <Route path="/trades" element={<TradesPage />} />
+              <Route path="/portfolio" element={<PortfolioPage />} />
+            </Routes>
+          </div>
+        </Layout>
+      </Router>
+    </AppProvider>
   );
 }
 
