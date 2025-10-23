@@ -10,6 +10,7 @@ from api.sentiment import router as sentiment_router
 from api.predictions import router as predictions_router
 from api.trades import router as trades_router
 from api.portfolio import router as portfolio_router
+from api.portfolio_simulation import router as simulation_router
 
 # Configure logging
 logging.basicConfig(
@@ -59,6 +60,7 @@ app.include_router(predictions_router)
 app.include_router(trades_router)
 app.include_router(portfolio_router)
 app.include_router(explanations_router)
+app.include_router(simulation_router)
 
 @app.get("/")
 async def root():

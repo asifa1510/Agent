@@ -121,6 +121,47 @@ class SentimentRepository(BaseRepository):
             logger.error(f"Error scanning recent sentiment: {e}")
             return []
     
+    async def get_sentiment_by_timerange(
+        self, 
+        start_timestamp: int, 
+        end_timestamp: int,
+        limit: int = 1000
+    ) -> List[SentimentScore]:
+        """
+        Get sentiment scores within a specific time range across all symbols.
+        
+        Args:
+            start_timestamp: Start timestamp (Unix)
+            end_timestamp: End timestamp (Unix)
+            limit: Maximum number of records to return
+            
+        Returns:
+            List of sentiment scores within the time range
+        """
+        filter_expression = "#ts BETWEEN :start_ts AND :end_ts"
+        expression_values = {
+            ':start_ts': start_timestamp,
+            ':end_ts': end_timestamp
+        }
+        expression_names = {'#ts': 'timestamp'}
+        
+        try:
+            scan_params = {
+                'FilterExpression': filter_expression,
+                'ExpressionAttributeValues': expression_values,
+                'ExpressionAttributeNames': expression_names,
+                'Limit': limit
+            }
+            
+            response = self.table.scan(**scan_params)
+            sentiment_scores = [SentimentScore(**item) for item in response.get('Items', [])]
+            
+            # Sort by timestamp
+            return sorted(sentiment_scores, key=lambda x: x.timestamp)
+        except Exception as e:
+            logger.error(f"Error scanning sentiment by timerange: {e}")
+            return []
+    
     async def calculate_sentiment_aggregate(
         self, 
         symbol: str, 

@@ -187,3 +187,44 @@ class PredictionsRepository(BaseRepository):
         except Exception as e:
             logger.error(f"Error scanning recent predictions: {e}")
             return []
+    
+    async def get_predictions_by_timerange(
+        self, 
+        start_timestamp: int, 
+        end_timestamp: int,
+        limit: int = 1000
+    ) -> List[PricePrediction]:
+        """
+        Get predictions within a specific time range.
+        
+        Args:
+            start_timestamp: Start timestamp (Unix)
+            end_timestamp: End timestamp (Unix)
+            limit: Maximum number of records to return
+            
+        Returns:
+            List of predictions within the time range
+        """
+        filter_expression = "#ts BETWEEN :start_ts AND :end_ts"
+        expression_values = {
+            ':start_ts': start_timestamp,
+            ':end_ts': end_timestamp
+        }
+        expression_names = {'#ts': 'timestamp'}
+        
+        try:
+            scan_params = {
+                'FilterExpression': filter_expression,
+                'ExpressionAttributeValues': expression_values,
+                'ExpressionAttributeNames': expression_names,
+                'Limit': limit
+            }
+            
+            response = self.table.scan(**scan_params)
+            predictions = [PricePrediction(**item) for item in response.get('Items', [])]
+            
+            # Sort by timestamp
+            return sorted(predictions, key=lambda x: x.timestamp)
+        except Exception as e:
+            logger.error(f"Error scanning predictions by timerange: {e}")
+            return []
